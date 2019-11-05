@@ -1,0 +1,2 @@
+*** Error for: [Errno 2] No such file or directory: 'E:\\journal_update\\Cambridge Journals\\threadpool\\mission\\cambridgejournal\\20191022\\html/html.html'
+{'provider': 'cambridgejournal', 'funcname': 'parse_html', 'message': None}

@@ -1,0 +1,21 @@
+canadian-journal-of-philosophy.html
+data-centric-engineering.html
+european-psychiatry.html
+experimental-results.html
+hypatia.html
+journal-of-the-royal-musical-association.html
+medical-history-supplements.html
+national-institute-economic-review.html
+proceedings-of-the-musical-association.html
+proceedings-of-the-royal-musical-association.html
+quantitative-plant-biology.html
+r-m-a-research-chronicle.html
+royal-musical-association-research-chronicle.html
+wearable-technologies.html
+*ConsumerFinCallback: Traceback (most recent call last):
+  File "threadpool.py", line 42, in ConsumerFinCallback
+    func(message)
+  File "./src\cambridgejournal.py", line 296, in startdown_list
+    fdir = self.list_path + '/' + url.split('/')[-3]
+IndexError: list index out of range
+
