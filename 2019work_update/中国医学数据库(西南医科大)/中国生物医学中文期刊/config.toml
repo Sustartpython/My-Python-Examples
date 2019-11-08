@@ -1,0 +1,16 @@
+DBHost = '192.168.30.207'
+DBPort = '3306'
+DBUser = 'root'
+DBPwd = 'vipdatacenter'
+DB = 'sinomed_zh'
+
+
+journal_list_path = 'E:\down_data_e\sinomed\zh\html'
+
+article_list_path = 'E:\down_data_e\sinomed\zh\article_list'
+
+article_list_2_path = 'E:\down_data_e\sinomed\zh\article_list_2'
+
+cover_path = 'E:\down_data_e\sinomed\zh\cover'
+
+big_json_path = 'E:\down_data_e\sinomed\zh\big_json'

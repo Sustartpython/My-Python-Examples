@@ -1,0 +1,16 @@
+DBHost = '192.168.30.199'
+DBPort = '3306'
+DBUser = 'root'
+DBPwd = 'vipdatacenter'
+DB = 'asceconference'
+
+USER = 'suhong'
+
+redisHost = '192.168.30.36'
+redisPort = '6379'
+redisDb = '0'
+
+indexPath = 'E:\work\Meeting\asce\index'
+listPath = 'E:\work\Meeting\asce\list'
+big_jsonPath = 'E:\work\Meeting\asce\big_json'
+mergePath = 'E:\work\Meeting\asce\merge_big_json'

@@ -1,0 +1,12 @@
+DBHost = '192.168.30.199'
+DBPort = '3306'
+DBUser = 'root'
+DBPwd = 'vipdatacenter'
+DB = 'add_new_info'
+
+redisHost = '192.168.30.36'
+redisPort = '6379'
+redisDb = '0'
+
+Dbpath = 'E:\work\ADD\muchong\data\muchong.mdb'
+

@@ -1,0 +1,10 @@
+DBHost = '192.168.30.207'
+DBPort = '3306'
+DBUser = 'root'
+DBPwd = 'vipdatacenter'
+DB = 'beihuakingbook'
+
+
+list_path = 'E:\work\bhjtukingbook\list'
+
+detail_path = 'E:\work\bhjtukingbook\detail'

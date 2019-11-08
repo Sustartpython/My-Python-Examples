@@ -1,0 +1,28 @@
+例如
+服务科学和管理	
+数据库中的web_site：www.hanspub.org/journal/ssem/
+其响应内容为：
+<script language = "javascript">
+  window.location="http://www.hanspub.org/journal/SSEM.html";
+</script>
+
+浏览器访问实施了重定向到：http://www.hanspub.org/journal/SSEM.html
+
+重定向后的网页内容中包含journal_name
+
+
+这种情况估计很多，
+
+情况一：
+<script language=javascript>    window.location.href='CN/volumn/home.shtml'
+</script>
+情况二：
+<script language = "javascript">
+  window.location="http://www.hanspub.org/journal/SSEM.html";
+</script>
+情况三：
+<script type="text/javascript">
+        
+                window.location.href = 'http://xb.sclib.org/CN/1003-7136/home.shtml';
+        
+</script>

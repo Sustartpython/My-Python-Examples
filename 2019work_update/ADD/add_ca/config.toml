@@ -1,0 +1,15 @@
+DBHost = '192.168.30.199'
+DBPort = '3306'
+DBUser = 'root'
+DBPwd = 'vipdatacenter'
+DB = 'add_new_info'
+
+redisHost = '192.168.30.36'
+redisPort = '6379'
+redisDb = '0'
+
+Dbpath_one = 'E:\work\ADD\add_ca\data\cnki.mdb'
+Dbpath_two = 'E:\work\ADD\add_ca\data\bigan.mdb'
+
+list_path_1 = 'E:\work\ADD\add_ca\list_1'
+list_path_2 = 'E:\work\ADD\add_ca\list_2'

@@ -1,0 +1,9 @@
+DBHost = '192.168.30.207'
+DBPort = '3306'
+DBUser = 'root'
+DBPwd = 'vipdatacenter'
+DB = 'sinomed_lw'
+
+
+path = 'E:\down_data_e\sinomed\lw\html'
+big_json_path = 'E:\down_data_e\sinomed\lw\big_json'
