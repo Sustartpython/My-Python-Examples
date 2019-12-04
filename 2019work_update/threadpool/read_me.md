@@ -1,0 +1,3 @@
+pishubook生成的big_json为pishuinfo的，生成的db3是pishubook的
+
+pishuinfo.py不需要执行

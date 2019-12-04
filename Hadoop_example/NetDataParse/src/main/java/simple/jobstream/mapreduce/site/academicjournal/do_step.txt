@@ -1,0 +1,4 @@
+//改变big_json输入路径
+程序最终执行代码：
+进入E:\DC_NetDataGather\NetDataParse 目录 ，打开cmd终端，执行 mvn clean package 
+java -jar ./target/NetDataParse-0.1.jar -jarName=NetDataParse-0.1.jar -jobStreamName=academicjournal -dataAnalysisName=academicjournal

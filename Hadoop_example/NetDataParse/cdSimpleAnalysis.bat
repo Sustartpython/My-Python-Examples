@@ -1,0 +1,1 @@
+cmd /k cd /d "D:\EclipseWorkBench\AnalysisTools-walker\SimpleAnalysis-walker-2.x"

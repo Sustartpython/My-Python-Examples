@@ -1,0 +1,16 @@
+DBHost = '192.168.30.199'
+DBPort = '3306'
+DBUser = 'root'
+DBPwd = 'vipdatacenter'
+DB = 'aiaameeting'
+
+USER = 'suhong'
+
+redisHost = '192.168.30.36'
+redisPort = '6379'
+redisDb = '0'
+
+indexPath = 'E:\work\Meeting\aiaa\index'
+listPath = 'E:\work\Meeting\aiaa\list'
+big_jsonPath = 'E:\work\Meeting\aiaa\big_json'
+mergePath = 'E:\work\Meeting\aiaa\merge_big_json'

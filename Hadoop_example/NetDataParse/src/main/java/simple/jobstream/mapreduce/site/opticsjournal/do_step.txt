@@ -1,0 +1,21 @@
+//a层处理步骤
+step1:在Html2XXXXObject  编辑解析代码
+step2:在SingleJobStream  改变输入输出  
+step3：新数据解析后的XXXXObject格式数据路径  改输入输出  输出为XXXXObject格式文件
+step4：// 以A层格式导出db3   输入为上一层的XXXXObject格式文件    输出为db3
+step5：添加以下调用方法// 正常更新result.add(Html2XXXXObject);Html2XXXXObject.addChildJob(Std2Db3A);
+step6：在/NetDataParse/src/main/java/simple/jobstream/JobStreamSchedule.java  添加程序执行接口
+		this.addSubJobStream("opticsjournal", simple.jobstream.mapreduce.site.opticsjournal.SingleJobStream.getJobStream());
+
+//测试
+测试步骤：/NetDataParse/src/test/java/test/test.java  运行test
+
+//zt处理步骤
+step1:在StdPubmedZhiTu  编辑解析代码
+step2:在SingleJobStream  改变输入输出  输入为a层中第3步输出的文件
+step3：添加以下调用方法  result.add(StdXXXXObjecttest);并注释掉a层的调用
+step4：需和a层分开执行，
+
+程序最终执行代码：
+进入E:\DC_NetDataGather\NetDataParse 目录 ，打开cmd终端，执行 mvn clean package 
+java -jar ./target/NetDataParse-0.1.jar -jarName=NetDataParse-0.1.jar -jobStreamName=opticsjournal -dataAnalysisName=opticsjournal

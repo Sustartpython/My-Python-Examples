@@ -1,0 +1,12 @@
+DBHost = '192.168.30.207'
+DBPort = '3306'
+DBUser = 'root'
+DBPwd = 'vipdatacenter'
+DB = 'fzwjt_video'
+
+
+list_path = 'E:\work\fzwjt\list'
+
+detail_path = 'E:\work\fzwjt\detail'
+
+cover_path = 'E:\work\fzwjt\cover'
