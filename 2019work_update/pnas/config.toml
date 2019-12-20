@@ -1,0 +1,17 @@
+DBHost = '192.168.30.207'
+DBPort = '3306'
+DBUser = 'root'
+DBPwd = 'vipdatacenter'
+DB = 'pnasjournal'
+
+redisHost = '192.168.30.36'
+redisPort = '6379'
+redisDb = '0'
+
+year_path = 'E:\work\PNAS\year'
+
+detail_path = 'E:\work\PNAS\detail'
+
+big_json_path = 'E:\work\PNAS\big_json'
+
+merge_big_json_path = 'E:\work\PNAS\merge_big_json'

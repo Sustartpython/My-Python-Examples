@@ -1,0 +1,18 @@
+DBHost = '192.168.30.207'
+DBPort = '3306'
+DBUser = 'root'
+DBPwd = 'vipdatacenter'
+DB = 'aspetjournal'
+
+redisHost = '192.168.30.36'
+redisPort = '6379'
+redisDb = '0'
+
+
+year_path = 'E:\work\DMAD\year'
+
+detail_path = 'E:\work\DMAD\detail'
+
+big_json_path = 'E:\work\DMAD\big_json'
+
+merge_big_json_path = 'E:\work\DMAD\merge_big_json'
