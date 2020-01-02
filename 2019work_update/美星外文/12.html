@@ -1,0 +1,756 @@
+
+<html>
+<head>
+<title>高野聖 Windows</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<style type="text/css">
+A{TEXT-DECORATION: none;}
+A:hover{COLOR: #AE0927;}
+A:link {color: #666666;}
+A:visited {color: #333333;}
+BODY
+{
+FONT-SIZE: 9pt;background:#ffffff;
+text-decoration: none;
+SCROLLBAR-FACE-COLOR: #f6f6f6;
+SCROLLBAR-HIGHLIGHT-COLOR: #ffffff; SCROLLBAR-SHADOW-COLOR: #cccccc; SCROLLBAR-3DLIGHT-COLOR: #cccccc; SCROLLBAR-ARROW-COLOR: #330000; SCROLLBAR-TRACK-COLOR: #f6f6f6; SCROLLBAR-DARKSHADOW-COLOR: #ffffff;
+}
+TD
+{
+FONT-FAMILY:宋体;FONT-SIZE: 9pt;line-height: 150%; 
+
+}
+Input
+{
+BACKGROUND-COLOR: #ffffff; 
+BORDER-BOTTOM: #666666 1px solid;
+BORDER-LEFT: #666666 1px solid;
+BORDER-RIGHT: #666666 1px solid;
+BORDER-TOP: #666666 1px solid;
+COLOR: #666666;
+HEIGHT: 18px;
+border-color: #666666 #666666 #666666 #666666; font-size: 9pt
+}
+Button
+{
+FONT-SIZE: 9pt;HEIGHT: 20px; 
+
+}
+Select
+{
+FONT-SIZE: 9pt;HEIGHT: 20px;
+
+}
+.border
+{
+BORDER-bottom: #666666 1px solid #999999;BORDER-top: #666666 1px solid #999999;background:url(Skin/01/border.gif);
+
+}
+.border2
+{
+BORDER-bottom: #cc0000 2px solid; border-right: 1px solid #000000;border-left: 1px solid #000000;background:#ffffff
+}
+.title_txt
+{
+background:url(Skin/01/topBar_bg_20.gif);
+
+}
+.title
+{
+background:#cccccc;height: 20;
+
+}
+.tdbg
+{
+border-right: 1px solid #000000;border-left: 1px solid #000000;background:#ffffff;line-height: 150%; 
+}
+.txt_css
+{
+border-right: 1px solid #000000;border-left: 1px solid #000000;background:url(Skin/01/txt_css.gif);height: 36;
+}
+.title_lefttxt
+{
+filter:Glow(Color=#ffffff, Strength=5)
+}
+.title_left
+{
+background:url(Skin/01/title_left.gif);height: 26;
+}
+.tdbg_left
+{
+background:url(Skin/01/tdbg_left.gif);line-height: 150%;
+}
+.title_left2
+{
+background:url(Skin/01/title_left2.gif);height: 10;
+}
+.tdbg_left2
+{
+background:url(Skin/01/tdbg_left2.gif);height: 13;
+
+}
+.tdbg_leftall
+{
+background:#f6f6f6;
+}
+.title_maintxt
+{
+filter:DropShadow(Color=#ffffff, OffX=1, OffY=1, Positive=1)
+
+}
+.title_main
+{
+background:url(Skin/01/title_main.gif);height: 22;
+}
+.tdbg_main
+{
+background:url(Skin/01/tdbg_main2.GIF);line-height: 100%;
+
+}
+.title_main2
+{
+background:url(Skin/01/maintop.gif);height: 202;
+}
+.tdbg_main2
+{
+background:url(Skin/01/tdbg_main3.GIF);height: 27;
+}
+.tdbg_mainall
+{
+background:url(Skin/01/kt01-p1.GIF);
+}
+.title_righttxt
+{
+filter:Glow(Color=#ffffff, Strength=5)
+}
+.title_right
+{
+background:url(Skin/01/title_right.gif);height: 26;
+}
+.tdbg_right
+{
+background:url(Skin/01/tdbg_right.gif);line-height: 150%;
+}
+.title_right2
+{
+background:url(Skin/01/title_right2.gif);height: 23;
+}
+.tdbg_right2
+{
+background:url(Skin/01/tdbg_right2.gif);height: 23;
+}
+.tdbg_rightall
+{
+background:#f6f6f6;border-: 1px solid #A1A1A1;
+}
+.topborder
+{
+border-right: 1px solid #000000;border-left: 1px solid #000000;background-image: url(Skin/01/topborder.gif);
+}
+.nav_top
+{
+background:url(Skin/01/nav_top.gif);height: 25;
+}
+.nav_main
+{
+background:url(Skin/01/nav_main.gif);
+line-height: 150%;height: 134;
+}
+.nav_bottom
+{
+border-right: 1px solid #000000;border-left: 1px solid #000000;background-image: url(Skin/01/nav_bottom.gif);height: 5;
+}
+.nav_menu
+{
+background:url(Skin/01/nav_menu.gif);height: 24;
+}
+.menu
+{
+background-color: #cccccc;width:97%;border: 1px;
+
+}
+td.MenuBody
+{
+background-color: #ffffff;
+}
+</style>
+
+<script language="JavaScript" type="text/JavaScript">
+//下拉菜单相关代码
+ var h;
+ var w;
+ var l;
+ var t;
+ var topMar = 1;
+ var leftMar = -2;
+ var space = 1;
+ var isvisible;
+ var MENU_SHADOW_COLOR='#999999';//定义下拉菜单阴影色
+ var global = window.document
+ global.fo_currentMenu = null
+ global.fo_shadows = new Array
+
+function HideMenu() 
+{
+ var mX;
+ var mY;
+ var vDiv;
+ var mDiv;
+	if (isvisible == true)
+{
+		vDiv = document.all("menuDiv");
+		mX = window.event.clientX + document.body.scrollLeft;
+		mY = window.event.clientY + document.body.scrollTop;
+		if ((mX < parseInt(vDiv.style.left)) || (mX > parseInt(vDiv.style.left)+vDiv.offsetWidth) || (mY < parseInt(vDiv.style.top)-h) || (mY > parseInt(vDiv.style.top)+vDiv.offsetHeight)){
+			vDiv.style.visibility = "hidden";
+			isvisible = false;
+		}
+}
+}
+
+function ShowMenu(vMnuCode,tWidth) {
+	vSrc = window.event.srcElement;
+	vMnuCode = "<table id='submenu' cellspacing=1 cellpadding=3 style='width:"+tWidth+"' class=menu onmouseout='HideMenu()'><tr height=23><td nowrap align=left class=MenuBody>" + vMnuCode + "</td></tr></table>";
+
+	h = vSrc.offsetHeight;
+	w = vSrc.offsetWidth;
+	l = vSrc.offsetLeft + leftMar+4;
+	t = vSrc.offsetTop + topMar + h + space-2;
+	vParent = vSrc.offsetParent;
+	while (vParent.tagName.toUpperCase() != "BODY")
+	{
+		l += vParent.offsetLeft;
+		t += vParent.offsetTop;
+		vParent = vParent.offsetParent;
+	}
+
+	menuDiv.innerHTML = vMnuCode;
+	menuDiv.style.top = t;
+	menuDiv.style.left = l;
+	menuDiv.style.visibility = "visible";
+	isvisible = true;
+    makeRectangularDropShadow(submenu, MENU_SHADOW_COLOR, 4)
+}
+
+function makeRectangularDropShadow(el, color, size)
+{
+	var i;
+	for (i=size; i>0; i--)
+	{
+		var rect = document.createElement('div');
+		var rs = rect.style
+		rs.position = 'absolute';
+		rs.left = (el.style.posLeft + i) + 'px';
+		rs.top = (el.style.posTop + i) + 'px';
+		rs.width = el.offsetWidth + 'px';
+		rs.height = el.offsetHeight + 'px';
+		rs.zIndex = el.style.zIndex - i;
+		rs.backgroundColor = color;
+		var opacity = 1 - i / (i + 1);
+		rs.filter = 'alpha(opacity=' + (100 * opacity) + ')';
+		el.insertAdjacentElement('afterEnd', rect);
+		global.fo_shadows[global.fo_shadows.length] = rect;
+	}
+}
+</script>
+<script language='JavaScript' type='text/JavaScript'>
+//菜单列表
+var menu_skin="&nbsp;<a style=font-size:9pt;line-height:14pt; href='SetCookieja.asp?Action=SetSkin&ClassID=1&SkinID=1'>牧虫典雅</a><br>&nbsp;<a style=font-size:9pt;line-height:14pt; href='SetCookieja.asp?Action=SetSkin&ClassID=1&SkinID=2'>雅虎秋梦</a><br>&nbsp;<a style=font-size:9pt;line-height:14pt; href='SetCookieja.asp?Action=SetSkin&ClassID=1&SkinID=3'>灰色畅想</a><br>&nbsp;<a style=font-size:9pt;line-height:14pt; href='SetCookieja.asp?Action=SetSkin&ClassID=1&SkinID=4'>绿雨飘香</a><br>&nbsp;<a style=font-size:9pt;line-height:14pt; href='SetCookieja.asp?Action=SetSkin&ClassID=1&SkinID=5'>幽绿芭蕾</a><br>&nbsp;<a style=font-size:9pt;line-height:14pt; href='SetCookieja.asp?Action=SetSkin&ClassID=1&SkinID=6'>晴空幽蓝</a><br>&nbsp;<a style=font-size:9pt;line-height:14pt; href='SetCookieja.asp?Action=SetSkin&ClassID=1&SkinID=7'>书卷飘香</a><br>&nbsp;<a style=font-size:9pt;line-height:14pt; href='SetCookieja.asp?Action=SetSkin&ClassID=1&SkinID=8'>蓝天动力</a><br>&nbsp;<a style=font-size:9pt;line-height:14pt; href='SetCookieja.asp?Action=SetSkin&ClassID=1&SkinID=9'>动力空间</a><br>";
+</script>
+<script type='text/javascript' language='JavaScript1.2' src='stm31.js'></script>
+<script language="JavaScript" type="text/JavaScript">
+function Check()
+{
+  if (document.myform.Name.value=="")
+  {
+    alert("请输入姓名！");
+	document.myform.Name.focus();
+	return false;
+  }
+  if (document.myform.Content.value=="")
+  {
+    alert("请输入评论内容！");
+	document.myform.Content.focus();
+	return false;
+  }
+  return true;  
+}
+</script>
+</head>
+<body leftmargin=0 topmargin=0 onmousemove='HideMenu()'>
+
+<div id=menuDiv style='Z-INDEX: 1000; VISIBILITY: hidden; WIDTH: 1px; POSITION: absolute; HEIGHT: 1px; BACKGROUND-COLOR: #9cc5f8'></div>
+
+<table width="760" border="0" align="center" cellpadding="0" cellspacing="0" class="tdbg">
+   <tr class="">
+     <td>
+     <table width="640" border="0" cellspacing="1" cellpadding="0" align="center">
+  <tr align="center"> 
+    <td><a href="/default.asp"><img src="/images/newimages/title_index.gif" border="0"></a></td>
+    <td><a href="/help/joinus.asp"><img src="/images/newimages/title_membership.gif" border="0"></a></td>
+    <td align="right"><img src="/images/newimages/title_dlreader.gif" border="0"></td>
+    <td rowspan="2"><img src="/images/newimages/pic_arrow.gif" border="0"></td>
+    <td align="left"><img src="/images/newimages/title_tech_services.gif" border="0"></td>
+    <td><img src="/images/newimages/title_aboutus.gif" border="0"></td>
+    <td><a href="/help/cases.asp"><img src="/images/newimages/title_application.gif" border="0"></a></td>
+   </tr>
+   <tr align="center"> 
+    <td class="ya"><a href="/default.asp">首页 <br> Home </a></td>
+    <td class="ya"><a href="/help/joinus.asp">加入会员 <br> Join Now</a></td>
+    <td align="right" class="ya"><a href="/download/download.asp">下载阅读器 <br> 
+      Download </a></td>
+    <td class="ya" align="left"><a href="/help/help.asp">技术服务 <br> Services </a></td>
+    <td class="ya"><a href="/help/aboutus.asp">公司介绍 <br> About ASDL </a></td>
+    <td class="ya"><a href="/help/cases.asp">成功应用 <br> Cases</a></td>
+   </tr>
+</table>
+<table width="739" border="0" cellspacing="1" cellpadding="0" align="center">
+   <tr>
+     <td colspan="7" align="center"><img src="/images/newimages/logo.gif" border="0"></td>
+   </tr>
+</table>
+     </td>
+   </tr>
+  <!--<tr class="nav_top"> 
+    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td>&nbsp;</td>
+          <td width="600" class="title_maintxt"> 
+            |&nbsp;<a href='Index.asp' target='_self'>首页</a>&nbsp;|&nbsp;<a href='Article_Index.asp' target='_self'>文章</a>&nbsp;|&nbsp;<a href='Soft_Indexja.asp'><font color=red>日文图书</font></a>&nbsp;|&nbsp;<a href='Photo_Index.asp' target='_self'>图片</a>&nbsp;|&nbsp;<a href='http://bbs.asp163.net/' target='_self'>论坛</a>&nbsp;|&nbsp;<a href='guestbook.asp' target='_self'>留言</a>&nbsp;|&nbsp;<a href='#' onMouseOver='ShowMenu(menu_skin,100)'>自选风格&nbsp;</a>|
+          </td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr> 
+    <td> <table width="100%" align="center" cellpadding="0" cellspacing="0">
+        <tr><td height="4"></td></tr><tr> 
+          <td valign="middle"> 
+            <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr valign="middle"> 
+                <td width="180"> 
+                  <a href='/' title='美星外文数字图书馆'><img src='images/logo.gif' width='180' height='60' border='0'></a>
+                </td>
+                <td width="500"> 
+                  <div align="center"> 
+                    
+                  </div></td>
+                <td width="80"> 
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%" align="center">
+                    <tr valign="middle"> 
+                      <td align="center"><img src="Images/home.gif" align="absmiddle" width="16" height="16"></td>
+                      <td align="center"><a href="#" onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('/')">设为首页</a></td>
+                    </tr>
+                    <tr valign="middle"> 
+                      <td align="center"><img src="Images/email.gif" align="absmiddle" width="16" height="17"></td>
+                      <td align="center"><a href="mailto:webmaster@3ese.com">联系站长</a></td>
+                    </tr>
+                    <tr valign="middle"> 
+                      <td align="center"><img src="Images/bookmark.gif" align="absmiddle" width="16" height="16"></td>
+                      <td align="center"><a href="javascript:window.external.addFavorite('/','美星外文数字图书馆')">加入收藏</a></td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table></td>
+        </tr>
+      </table></td>
+  </tr>-->
+  <tr valign="middle"> 
+    <td valign="middle" class="nav_menu">
+      <script type='text/javascript' language='JavaScript1.2'>
+<!--
+stm_bm(['uueoehr',400,'','images/blank.gif',0,'','',0,0,0,0,0,1,0,0]);
+stm_bp('p0',[0,4,0,0,2,2,0,0,100,'',-2,'',-2,90,0,0,'#000000','transparent','',3,0,0,'#000000']);
+stm_ai('p0i0',[0,'|','','',-1,-1,0,'','_self','','','','',0,0,0,'','',0,0,0,0,1,'#f1f2ee',1,'#cccccc',1,'','',3,3,0,0,'#fffff7','#000000','#000000','#000000','9pt 宋体','9pt 宋体',0,0]);
+stm_aix('p0i1','p0i0',[0,'日文图书首页','','',-1,-1,0,'Soft_Indexja.asp','_self','Soft_Indexja.asp','','','',0,0,0,'','',0,0,0,0,1,'#f1f2ee',1,'#cccccc',1,'','',3,3,0,0,'#fffff7','#ff0000','#000000','#cc0000','9pt 宋体','9pt 宋体']);
+stm_aix('p0i2','p0i0',[0,'|','','',-1,-1,0,'','_self','','','','',0,0,0,'','',0,0,0,0,1,'#f1f2ee',1,'#cccccc',1,'','',3,3,0,0,'#fffff7','#000000','#000000','#000000','9pt 宋体','9pt 宋体',0,0]);
+stm_aix('p0i3','p0i0',[0,'小说','','',-1,-1,0,'Soft_Classja.asp?ClassID=1','_self','Soft_Classja.asp?ClassID=1','小说','','',0,0,0,'','',0,0,0,0,1,'#f1f2ee',1,'#cccccc',1,'','',3,3,0,0,'#fffff7','#ff0000','#000000','#cc0000','9pt 宋体','9pt 宋体']);
+stm_aix('p0i2','p0i0',[0,'|','','',-1,-1,0,'','_self','','','','',0,0,0,'','',0,0,0,0,1,'#f1f2ee',1,'#cccccc',1,'','',3,3,0,0,'#fffff7','#000000','#000000','#000000','9pt 宋体','9pt 宋体',0,0]);
+stm_aix('p0i4','p0i0',[0,'伝記&#12539;伝記','','',-1,-1,0,'Soft_Classja.asp?ClassID=2','_self','Soft_Classja.asp?ClassID=2','伝記&#12539;伝記','','',0,0,0,'','',0,0,0,0,1,'#f1f2ee',1,'#cccccc',1,'','',3,3,0,0,'#fffff7','#ff0000','#000000','#cc0000','9pt 宋体','9pt 宋体']);
+stm_aix('p0i2','p0i0',[0,'|','','',-1,-1,0,'','_self','','','','',0,0,0,'','',0,0,0,0,1,'#f1f2ee',1,'#cccccc',1,'','',3,3,0,0,'#fffff7','#000000','#000000','#000000','9pt 宋体','9pt 宋体',0,0]);
+stm_aix('p0i5','p0i0',[0,'诗集','','',-1,-1,0,'Soft_Classja.asp?ClassID=3','_self','Soft_Classja.asp?ClassID=3','诗集','','',0,0,0,'','',0,0,0,0,1,'#f1f2ee',1,'#cccccc',1,'','',3,3,0,0,'#fffff7','#ff0000','#000000','#cc0000','9pt 宋体','9pt 宋体']);
+stm_aix('p0i2','p0i0',[0,'|','','',-1,-1,0,'','_self','','','','',0,0,0,'','',0,0,0,0,1,'#f1f2ee',1,'#cccccc',1,'','',3,3,0,0,'#fffff7','#000000','#000000','#000000','9pt 宋体','9pt 宋体',0,0]);
+stm_aix('p0i6','p0i0',[0,'戏曲','','',-1,-1,0,'Soft_Classja.asp?ClassID=4','_self','Soft_Classja.asp?ClassID=4','戏曲','','',0,0,0,'','',0,0,0,0,1,'#f1f2ee',1,'#cccccc',1,'','',3,3,0,0,'#fffff7','#ff0000','#000000','#cc0000','9pt 宋体','9pt 宋体']);
+stm_aix('p0i2','p0i0',[0,'|','','',-1,-1,0,'','_self','','','','',0,0,0,'','',0,0,0,0,1,'#f1f2ee',1,'#cccccc',1,'','',3,3,0,0,'#fffff7','#000000','#000000','#000000','9pt 宋体','9pt 宋体',0,0]);
+stm_aix('p0i7','p0i0',[0,'随笔','','',-1,-1,0,'Soft_Classja.asp?ClassID=5','_self','Soft_Classja.asp?ClassID=5','随笔','','',0,0,0,'','',0,0,0,0,1,'#f1f2ee',1,'#cccccc',1,'','',3,3,0,0,'#fffff7','#ff0000','#000000','#cc0000','9pt 宋体','9pt 宋体']);
+stm_aix('p0i2','p0i0',[0,'|','','',-1,-1,0,'','_self','','','','',0,0,0,'','',0,0,0,0,1,'#f1f2ee',1,'#cccccc',1,'','',3,3,0,0,'#fffff7','#000000','#000000','#000000','9pt 宋体','9pt 宋体',0,0]);
+stm_aix('p0i1','p0i0',[0,'英文图书首页','','',-1,-1,0,'soft_index.asp','_self','soft_index.asp','','','',0,0,0,'','',0,0,0,0,1,'#f1f2ee',1,'#cccccc',1,'','',3,3,0,0,'#fffff7','#ff0000','#000000','#cc0000','9pt 宋体','9pt 宋体']);
+stm_aix('p0i2','p0i0',[0,'|','','',-1,-1,0,'','_self','','','','',0,0,0,'','',0,0,0,0,1,'#f1f2ee',1,'#cccccc',1,'','',3,3,0,0,'#fffff7','#000000','#000000','#000000','9pt 宋体','9pt 宋体',0,0]);
+stm_em();
+//-->
+</script>
+
+    </td>
+  </tr>
+  <tr Class="nav_menu"> 
+    <td></td>
+  </tr>
+  <tr> 
+    <td class="nav_bottom"></td>
+  </tr>
+</table>
+<table width="760" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="txt_css">
+  <tr valign="middle"> 
+    <td width=46><div align="right"><img src="Images/arrow3.gif" width="29" height="11" align="absmiddle"> 
+      </div></td>
+    <td width=556>
+      &nbsp;您现在的位置：&nbsp;<a href='/'>美星外文数字图书馆</a>&nbsp;&gt;&gt;&nbsp;<a href='Soft_Indexja.asp'>日文图书</a>&nbsp;&gt;&gt;&nbsp;<a href='Soft_Classja.asp?ClassID=1'>小说</a>&nbsp;&gt;&gt;&nbsp;图书信息
+</td>
+    <td width=158 align=right>
+<script language="JavaScript" type="text/JavaScript">
+var day="";
+var month="";
+var ampm="";
+var ampmhour="";
+var myweekday="";
+var year="";
+mydate=new Date();
+myweekday=mydate.getDay();
+mymonth=mydate.getMonth()+1;
+myday= mydate.getDate();
+myyear= mydate.getYear();
+year=(myyear > 200) ? myyear : 1900 + myyear;
+if(myweekday == 0)
+weekday=" 星期日 ";
+else if(myweekday == 1)
+weekday=" 星期一 ";
+else if(myweekday == 2)
+weekday=" 星期二 ";
+else if(myweekday == 3)
+weekday=" 星期三 ";
+else if(myweekday == 4)
+weekday=" 星期四 ";
+else if(myweekday == 5)
+weekday=" 星期五 ";
+else if(myweekday == 6)
+weekday=" 星期六 ";
+document.write(year+"年"+mymonth+"月"+myday+"日 "+weekday);
+</script>&nbsp;</td><script src="/count/mystat.asp"></script>
+  </tr>
+</table>
+
+<table width="760" border="0" align="center" cellpadding="0" cellspacing="0" class="border2">
+  <!--<tr> 
+    <td colspan="3" align="left" valign="top" class="tdbg_rightall"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td width="100" valign="middle"><img src="Images/arrow2.gif" width="6" height="7" align="absmiddle">&nbsp;<font color="#CC0000">阅读中心通告</font></td>
+          <td width="480" valign="middle"> <marquee id="scrollarea" direction="left" scrolldelay="10" scrollamount="1" width="470" height="20" onmouseover="this.stop();" onmouseout="this.start();"> 
+            <p>&nbsp;&nbsp;没有通告</p>
+            </marquee> </td>
+          <td width="180" align="center" valign="middle"> <a href="Soft_NewUpdate.asp"><font color="#009900">最近更新</font></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Soft_NewElite.asp"><font color="#009900">推荐阅读</font></a></td>
+        </tr>
+      </table> </td>
+  </tr>-->
+  <tr> 
+    <td width="180" align="left" valign="top" class="tdbg_leftall"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td height="5"></td>
+        </tr>
+      </table>
+      <table width="180" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td background="Images/left03.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr class="title_left"> 
+                <td align="center" class="title_lefttxt"> <strong>图书搜索</strong></td>
+              </tr>
+            </table></td>
+        </tr>
+        <tr> 
+          <td class="tdbg_left"><div align="center">
+              <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="5" style="word-break:break-all">
+                <tr> 
+                  <td valign="top"> <div align="center">
+                      <table border='0' cellpadding='0' cellspacing='0'><form method='Get' name='SearchForm' action='Soft_Searchja.asp'><tr><td height='28' align='center'><input type='text' name='keyword'  size='15' value='关键字' maxlength='50' onFocus='this.select();'>&nbsp;<input type='hidden' name='field' value='Title'><input type='submit' name='Submit'  value='搜索'></td></tr></form></table>
+                    </div></td>
+                </tr>
+              </table>
+              
+            </div></td>
+        </tr>
+        <tr> 
+          <td class="title_left2"></td>
+        </tr>
+        
+        <tr> 
+          <td background="Images/left14.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr class="title_left"> 
+                <td align="center" class="title_lefttxt"><strong>小说阅读Top10</strong></td>
+              </tr>
+            </table></td>
+        </tr>
+        <tr> 
+          <td valign="top" class="tdbg_left"><table width="100%" height="100%" border="0" cellpadding="8" style="word-break:break-all">
+              <tr> 
+                <td valign="top"> <table width='100%' border='0' cellspacing='2' cellpadding='0'><tr><td width='15' align='center'><b>1</b></td><td><a href='Soft_Showja.asp?SoftID=222' title='图书名称：金色夜叉
+图书版本：Windows
+文件大小：0K
+作    者：尾崎 紅葉 
+更新时间：2004-6-15
+阅读次数：今日:6 本周:6 本月:12 总计:100' target='_self'>金色夜叉&nbsp;Windows</a></td></tr><tr><td width='15' align='center'><b>2</b></td><td><a href='Soft_Showja.asp?SoftID=237' title='图书名称：少女病
+图书版本：Windows
+文件大小：0K
+作    者：田山花袋
+更新时间：2004-6-28
+阅读次数：今日:6 本周:6 本月:12 总计:95' target='_self'>少女病&nbsp;Windows</a></td></tr><tr><td width='15' align='center'><b>3</b></td><td><a href='Soft_Showja.asp?SoftID=242' title='图书名称：岛三题
+图书版本：Windows
+文件大小：0K
+作    者：若山牧水
+更新时间：2004-7-3
+阅读次数：今日:1 本周:1 本月:1 总计:92' target='_self'>岛三题&nbsp;Windows</a></td></tr><tr><td width='15' align='center'><b>4</b></td><td><a href='Soft_Showja.asp?SoftID=241' title='图书名称：野蒜の花
+图书版本：Windows
+文件大小：0K
+作    者：若山牧水
+更新时间：2004-7-2
+阅读次数：今日:5 本周:5 本月:11 总计:91' target='_self'>野蒜の花&nbsp;Windows</a></td></tr><tr><td width='15' align='center'><b>5</b></td><td><a href='Soft_Showja.asp?SoftID=240' title='图书名称：地震日记
+图书版本：Windows
+文件大小：0K
+作    者：若山牧水
+更新时间：2004-7-1
+阅读次数：今日:6 本周:6 本月:12 总计:91' target='_self'>地震日记&nbsp;Windows</a></td></tr><tr><td width='15' align='center'><b>6</b></td><td><a href='Soft_Showja.asp?SoftID=239' title='图书名称：凤来寺纪行
+图书版本：Windows
+文件大小：0K
+作    者：若山牧水
+更新时间：2004-6-30
+阅读次数：今日:4 本周:4 本月:9 总计:88' target='_self'>凤来寺纪行&nbsp;Windows</a></td></tr><tr><td width='15' align='center'><b>7</b></td><td><a href='Soft_Showja.asp?SoftID=238' title='图书名称：梅雨纪行
+图书版本：Windows
+文件大小：0K
+作    者：若山牧水
+更新时间：2004-6-29
+阅读次数：今日:5 本周:5 本月:10 总计:87' target='_self'>梅雨纪行&nbsp;Windows</a></td></tr><tr><td width='15' align='center'><b>8</b></td><td><a href='Soft_Showja.asp?SoftID=108' title='图书名称：安乐死の方法
+图书版本：Windows
+文件大小：0K
+作    者：山崎淳尺
+更新时间：2004-2-22
+阅读次数：今日:3 本周:3 本月:3 总计:87' target='_self'>安乐死の方法&nbsp;Windows</a></td></tr><tr><td width='15' align='center'><b>9</b></td><td><a href='Soft_Showja.asp?SoftID=236' title='图书名称：一兵卒
+图书版本：Windows
+文件大小：0K
+作    者：田山花袋
+更新时间：2004-6-27
+阅读次数：今日:2 本周:2 本月:7 总计:80' target='_self'>一兵卒&nbsp;Windows</a></td></tr><tr><td width='15' align='center'><b>10</b></td><td><a href='Soft_Showja.asp?SoftID=226' title='图书名称：家　上巻
+图书版本：Windows
+文件大小：0K
+作    者：島崎 藤村
+更新时间：2004-6-18
+阅读次数：今日:6 本周:6 本月:10 总计:80' target='_self'>家　上巻&nbsp;Windows</a></td></tr></table> </td>
+              </tr>
+            </table></td>
+        </tr>
+        <tr> 
+          <td class="title_left2"></td>
+        </tr>
+        <tr> 
+          <td background="Images/left05.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr class="title_left"> 
+                <td align="center" class="title_lefttxt"><strong>发 表 评 论</strong></td>
+              </tr>
+            </table></td>
+        </tr>
+        <tr> 
+          <td valign="top" class="tdbg_left"><table width="175" border="0" align="center" cellpadding="5" cellspacing="0" style="word-break:break-all">
+              <form name="myform" method="post" action="Soft_Commentja.asp" onSubmit="return Check()" >
+				
+                <tr> 
+					<td align="center">姓名：
+                    <input name="Name" type="text" id="Name" size="17" maxlength="16" title=必填></td>
+                </tr>
+				
+				<tr >
+				  <td align="center">评分<input type="radio" name="Score" value="1" style="BORDER:0px;">1<input type="radio" name="Score" value="2" style="BORDER:0px;">2<input type="radio" name="Score" value="3" checked style="BORDER:0px;">3<input type="radio" name="Score" value="4" style="BORDER:0px;">4<input type="radio" name="Score" value="5" style="BORDER:0px;">5
+				  </td>
+				</tr>
+                <tr> 
+                  <td align="center"> <textarea name="Content" cols="23" rows="5" id="Content"  title="请注意用语文明且合法，不要发布带有攻击性的言论，谢谢合作！" style="BORDER-BOTTOM: #cccccc 1px solid; BORDER-LEFT: #cccccc 1px solid; BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; font-size: 9pt"></textarea> 
+                  </td>
+                </tr>
+                <tr> 
+                  <td> <div align="center"> 
+                      <input name="Action" type="hidden" id="Action" value="Save">
+					  <input name="SoftID" type="hidden" id="SoftID" value="99"> 
+					  <input type="submit" name="Submit2" value="提交">
+                      &nbsp; 
+                      <input name="Reset2" type="reset" id="Reset3" value="清除">
+                    </div></td>
+                </tr>
+              </form>
+            </table></td>
+        </tr>
+        <tr>
+          <td class="title_left2"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="5">&nbsp;</td>
+    <td width="575" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td height="5"></td>
+        </tr>
+      </table>
+      <table width="570" border="0" cellspacing="1" cellpadding="3" bgcolor="#666666">
+        <tr> 
+          <td align="left" bgcolor="#FFFFFF">
+              <TABLE 
+width="100%" border=0 align=center cellPadding=2 cellSpacing=0 class="tdbg_rightall" style="word-break:break-all">
+                <TBODY>
+                  <TR> 
+                    <TD align=middle><div align="center"><STRONG>高野聖&nbsp;&nbsp;Windows</STRONG></div></TD>
+                  </TR>
+                </TBODY>
+              </TABLE>
+              <table width="100%" height="5" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td></td>
+                </tr>
+              </table>
+              <TABLE align=center bgColor=#CCCCCC border=0 cellPadding=2 
+            cellSpacing=1 style="WORD-BREAK: break-all" width="100%">
+                <TBODY>
+                  <TR bgColor=#fffffe> 
+                    <TD width="45%">作者:泉&nbsp;鏡花&nbsp; </TD>
+                    <TD width="55%" rowSpan=2 align=center valign="middle" bgColor=#fffffe><img src='images/nopic2.jpg' width='150'>
+                    </TD>
+                    
+                  </TR>
+                 
+                  <TR bgColor=#fffffe> 
+                    <TD width="45%" bgcolor="#fffffe">添加时间：&nbsp;2004-2-13</TD>
+                  
+                  </TR>
+               
+                  <!--<TR bgColor=#fffffe> 
+                  
+                    <TD width="26%">&nbsp;admin</TD>
+                  </TR>-->
+                
+                </TBODY>
+              </TABLE>
+              <BR>
+              <!--<TABLE align=center border=0 cellPadding=2 cellSpacing=0 
+width="100%">
+                <TBODY>
+                  <TR> 
+                    <TD class="tdbg_rightall">::<font color="#CC0000">阅读地址</font>::                    </TD>
+                  </TR>
+                </TBODY>
+              </TABLE>-->
+              <TABLE align=center bgColor=#CCCCCC border=0 cellPadding=2 
+            cellSpacing=1 style="WORD-BREAK: break-all" width="100%">
+                <TBODY>
+                  <TR> 
+                    <TD bgColor=#fffffe style="LINE-HEIGHT: 16px"> 
+                      ┊&nbsp;<a href='Soft_Downja.asp?UrlID=1&SoftID=99' target='_blank'>全文阅读</a>&nbsp;┊</TD>
+                  </TR>
+                </TBODY>
+              </TABLE>
+		      
+              <BR>
+              
+              <TABLE align=center border=0 cellPadding=2 cellSpacing=0 
+width="100%">
+                <TBODY>
+                  <TR> 
+                    <TD class="tdbg_rightall">::<font color="#009900">相关图书</font>::</TD>
+                  </TR>
+                </TBODY>
+              </TABLE>
+              <TABLE align=center bgColor=#CCCCCC border=0 cellPadding=2 
+            cellSpacing=1 style="WORD-BREAK: break-all" width="100%">
+                <TBODY>
+                  <TR> 
+                    <TD bgColor=#fffffe style="LINE-HEIGHT: 16px">
+                      <li><a href='Soft_Showja.asp?SoftID=247' title='图书名称：若山牧水   全集4
+图书版本：Windows
+文件大小：0K
+作    者：若山牧水
+更新时间：2004-7-8
+阅读次数：87' target='_self'>若山牧水&nbsp;&nbsp;&nbsp;全集4&nbsp;Windows[<font color=red>87</font>]</li><br><li><a href='Soft_Showja.asp?SoftID=246' title='图书名称：若山牧水   全集3
+图书版本：Windows
+文件大小：0K
+作    者：若山牧水
+更新时间：2004-7-7
+阅读次数：105' target='_self'>若山牧水&nbsp;&nbsp;&nbsp;全集3&nbsp;Windows[<font color=red>105</font>]</li><br><li><a href='Soft_Showja.asp?SoftID=245' title='图书名称：若山牧水   全集2
+图书版本：Windows
+文件大小：0K
+作    者：若山牧水
+更新时间：2004-7-6
+阅读次数：104' target='_self'>若山牧水&nbsp;&nbsp;&nbsp;全集2&nbsp;Windows[<font color=red>104</font>]</li><br><li><a href='Soft_Showja.asp?SoftID=244' title='图书名称：若山牧水   全集1
+图书版本：Windows
+文件大小：0K
+作    者：若山牧水
+更新时间：2004-7-5
+阅读次数：53' target='_self'>若山牧水&nbsp;&nbsp;&nbsp;全集1&nbsp;Windows[<font color=red>53</font>]</li><br><li><a href='Soft_Showja.asp?SoftID=243' title='图书名称：草鞋の话旅の话
+图书版本：Windows
+文件大小：0K
+作    者：若山牧水
+更新时间：2004-7-4
+阅读次数：78' target='_self'>草鞋の话旅の话&nbsp;Windows[<font color=red>78</font>]</li><br>
+                    </TD>
+                  </TR>
+                </TBODY>
+              </TABLE>
+              <BR>
+              <!--<TABLE align=center border=0 cellPadding=2 cellSpacing=0 
+width="100%">
+                <TBODY>
+                  <TR> 
+                    <TD class="tdbg_rightall">::阅读说明::</TD>
+                  </TR>
+                </TBODY>
+              </TABLE>
+              <TABLE align=center bgColor=#CCCCCC border=0 cellPadding=2 
+            cellSpacing=1 style="WORD-BREAK: break-all" width="100%">
+                <TBODY>
+                  <TR> 
+                    <TD bgColor=#fffffe style="LINE-HEIGHT: 16px"><b>*&nbsp;</b>为了达到最快的阅读速度，推荐使用<a href="UploadSoft/fg140.rar">Acrobat </a>阅读本站图书。 
+                      <br>
+                      <b>*&nbsp;</b>如果您发现该图书不能阅读，请通知<a href="mailto:webmaster@3ese.com">管理员</a>，谢谢！ 
+                      <br>
+                      <b>*&nbsp;</b>未经本站明确许可，任何网站不得非法盗链及抄袭本站资源；如引用页面，请注明来自<a href="javascript:window.external.addFavorite('/','美星外文数字图书馆')">本站</a>，谢谢您的支持！ 
+                    </TD>
+                  </TR>
+                </TBODY>
+              </TABLE>
+              <BR>-->
+            <TABLE align=center border=0 cellPadding=2 cellSpacing=0 width="100%">
+              <TBODY> 
+              <TR> 
+                <TD class="tdbg_rightall"><strong>&nbsp;<img src="Images/TEAM.gif" width="16" height="16" align="absmiddle">&nbsp;网友评论：</strong>（只显示最新5条。评论内容只代表网友观点，与本站立场无关！）</TD>
+                <TD class="tdbg_rightall" align="right">【<a href="Soft_Commentja.asp?SoftID=99" target="_blank">发表评论</a>】</TD>
+              </TR>
+              </TBODY> 
+            </TABLE>
+              <TABLE align=center bgColor=#CCCCCC border=0 cellPadding=2 
+            cellSpacing=1 style="WORD-BREAK: break-all" width="100%">
+                <TBODY>
+                  <TR> 
+                    <TD bgColor=#fffffe style="LINE-HEIGHT: 16px"> 
+                      &nbsp;&nbsp;&nbsp;&nbsp;没有任何评论
+                    </TD>
+                  </TR>
+                </TBODY>
+              </TABLE>
+         </td>
+        </tr>
+      </table> 
+      <table width="99%" border="0" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td  height="13" align="center" valign="top"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr> 
+                <td height="13" Class="tdbg_left2"></td>
+              </tr>
+            </table></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<table width="760" border="0" align="center" cellpadding="0" cellspacing="0" class="tdbg">
+  <tr> 
+    <td  height="13" align="center" valign="top"><table width="756" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td height="13" Class="tdbg_left2"></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<table width='760' align='center' border='0' class='topborder' cellpadding='0' cellspacing='0'><tr height='22' align='center'><td class='title_maintxt'><DIV align=center> <font style=font-size:11px>技术热线:</font> 010-82631692 Email:macroon@126.com|&nbsp;<a href='/default.asp'>美星首页</a>&nbsp;|&nbsp;<a href='/help/contactus.asp'>联系我们</a>&nbsp;|&nbsp;<a href='/help/faq.asp'>常见问题解答</a>&nbsp;|&nbsp;</td></tr><tr align='center' height='20' valign='bottom'><td>Copyright &copy; 2003 - 2006 ASDL Inc. All Rights Reserved<br>版权所有 美星</td></tr></table>
+</body>
+</html>

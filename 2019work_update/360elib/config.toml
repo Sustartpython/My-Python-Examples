@@ -1,0 +1,16 @@
+DBHost = '192.168.30.207'
+DBPort = '3306'
+DBUser = 'root'
+DBPwd = 'vipdatacenter'
+DB = '360elib_book'
+
+
+index_path = 'E:\work\360elib\index'
+
+list_path = 'E:\work\360elib\list'
+
+detail_path = 'E:\work\360elib\detail'
+
+cover_path = 'E:\work\360elib\cover'
+
+all_detail_list_path = 'E:\work\360elib\all_detail_list'

@@ -1,0 +1,12 @@
+DBHost = '192.168.30.207'
+DBPort = '3306'
+DBUser = 'root'
+DBPwd = 'vipdatacenter'
+DB = 'meixing_waiwen'
+
+index_path = 'E:\work\美星外文\index'
+
+list_path = 'E:\work\美星外文\list'
+
+detail_path = 'E:\work\美星外文\detail'
+

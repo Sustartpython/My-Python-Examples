@@ -44,7 +44,12 @@ class BioOneJournal(Provider):
         self.mapfunc['mapcover'] = self.mapcover
 
     def update(self):
-        self.startdown_html(None)
+        # self.startdown_html(None)
+        self.down_cover(None)
+        # self.initpath()
+        # self.refreshproxypool()
+        # self.parse_indexlist(None)
+
 
     def startdown_html(self, message):
         self.initpath()
@@ -106,6 +111,8 @@ class BioOneJournal(Provider):
         self.senddistributefinish('startdown_indexlist')
 
     def startdown_indexlist(self, message):
+        conn = utils.init_db('mysql', 'bioonejournal')
+        cur = conn.cursor()
         utils.printf('%s:开始下载期索引页...' % self.provider)
         if not self.index_path:
             self.initpath()
@@ -114,18 +121,18 @@ class BioOneJournal(Provider):
             os.makedirs(path)
         self.refreshproxypool()
         self.count = 0
-        conn = utils.init_db('mysql', 'bioonejournal')
-        cur = conn.cursor()
         cur.execute('select url,cover_url from journal')
         rows = cur.fetchall()
         self.totalcount = len(rows)
+        
         for url, _ in rows:
             fname = path + '/' + url.split('/')[-1] + '.html'
-            self.sendwork('down_indexlist', (url, fname))
+            self.sendwork('down_indexlist', (url, fname,0))
 
     def down_indexlist(self, message):
         url = message[0]
         fname = message[1]
+        failcount = message[2]
         if os.path.exists(fname):
             self.senddistributefinish('process_indexlist', url)
             return
@@ -133,7 +140,12 @@ class BioOneJournal(Provider):
         print("----------%s-----------" % url)
         resp = self.gethtml('https://bioone.org%s/issues' % url, feature)
         if not resp:
-            self.sendwork('down_indexlist', message)
+            failcount += 1
+            utils.printf("%s------failcount:%s" % (url,failcount))
+            if failcount == 10:
+                self.senddistributefinish('process_indexlist', url)
+                return
+            self.sendwork('down_indexlist', (url, fname,failcount))
             return
         with open(fname, mode='w', encoding='utf8') as f:
             f.write(resp.content.decode('utf8'))
@@ -150,6 +162,26 @@ class BioOneJournal(Provider):
         if self.count == self.totalcount:
             utils.printf('%s:down_indexlist finish' % self.provider)
             self.sendwork('parse_indexlist')
+        # self.count = self.count + 1
+        # url = message[0]
+        # flag = message[1]
+        # if flag:
+        #     # self.sendwork('parse_indexlist')
+        #     self.parse_indexlist(None)
+        # else:
+        #     sql = "update journal set failcount=failcount+1 where url='{}'".format(url)
+        # self.sqlList.append(sql)
+        # if len(self.sqlList) >= 200 or (self.totalcount == self.count):
+        #     conn = utils.init_db('mysql', 'bioonejournal')
+        #     cur = conn.cursor()
+        #     for sql in self.sqlList:
+        #         cur.execute(sql)
+        #     conn.commit()
+        #     conn.close()
+        #     self.sqlList.clear()
+        # if self.totalcount == self.count:
+        #     self.parse_indexlist(None)
+
 
     def parse_indexlist(self, message):
         try:
